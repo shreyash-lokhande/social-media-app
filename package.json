@@ -18,10 +18,12 @@
   },
   "homepage": "https://github.com/urlGuney/mern_app2#readme",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.25.3",
     "mongoose": "^5.9.12",
     "multer": "^1.4.2"
   }
