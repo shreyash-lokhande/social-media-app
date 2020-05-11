@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const moment = require('moment');
+const Config = require('../config');
+const jwt = require('jsonwebtoken');
 const Comment = require('./comment');
 const Post = require('./post');
 
@@ -8,7 +10,7 @@ const userSchema = new mongoose.Schema({
     username: {type: String, required: true, unique:true, max: 20},
     firstName: {type:String, default: '', max: 20},
     lastName: {type: String, default: '', max: 20},
-    profilePicture: {type: String, default: '1589232469458nopic.png'},
+    profilePicture: {type: String, default: 'uploads/1589234862373nopic.png'},
     bio: {type: String, default: '', max: 150},
     email: {type: String, required: true, unique: true, max: 80},
     password: {type: String, required: true, min: 6},
@@ -50,6 +52,15 @@ userSchema.methods.comparePassword = async function(password, cb) {
     try {
         const compare = await bcrypt.compare(password, this.password);
         return cb(null, compare);
+    } catch(err) {
+        return cb(err, null);
+    }
+}
+
+userSchema.methods.generateToken = async function(user, cb) {
+    try {
+        const token = await jwt.sign({ id: user._id }, Config.SECRET, {expiresIn: '5d'});
+        return cb(null, token);
     } catch(err) {
         return cb(err, null);
     }
