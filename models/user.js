@@ -5,13 +5,13 @@ const Comment = require('./comment');
 const Post = require('./post');
 
 const userSchema = new mongoose.Schema({
-    username: {type: String, required: true, unique:true},
-    firstName: {type:String, default: ''},
-    lastName: {type: String, default: ''},
+    username: {type: String, required: true, unique:true, max: 20},
+    firstName: {type:String, default: '', max: 20},
+    lastName: {type: String, default: '', max: 20},
     profilePicture: {type: String, default: ''},
-    bio: {type: String, default: ''},
-    email: {type: String, required: true, unique: true},
-    password: {type: String, required: true},
+    bio: {type: String, default: '', max: 150},
+    email: {type: String, required: true, unique: true, max: 80},
+    password: {type: String, required: true, min: 6},
     operations: {
         operationType: {
             type: String,
