@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     username: {type: String, required: true, unique:true, max: 20},
     firstName: {type:String, default: '', max: 20},
     lastName: {type: String, default: '', max: 20},
-    profilePicture: {type: String, default: ''},
+    profilePicture: {type: String, default: '1589232469458nopic.png'},
     bio: {type: String, default: '', max: 150},
     email: {type: String, required: true, unique: true, max: 80},
     password: {type: String, required: true, min: 6},

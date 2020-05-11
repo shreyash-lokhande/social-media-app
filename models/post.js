@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    photo: {type: String, default: '1589232469458nopic.png'},
+    photo: {type: String},
     hashtags: {type: Array, default: []},
     tags: {type: Array, default:[]},
     author: {
